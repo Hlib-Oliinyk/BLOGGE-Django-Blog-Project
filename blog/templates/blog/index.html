@@ -1,0 +1,110 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}Blogge{% endblock %}
+
+{% block content %}
+<section class="features">
+    <div class="container">
+        <article class="features_post">
+            <div class="features_post_content">
+                <div class="features_post_author">
+                    <p>By <span>Hlib Oliinyk</span></p>
+                </div>
+                {% if first_post %}
+                <div class="features_post_title">
+                    <a href = "{% url 'post' first_post.id %}">{{ first_post.title }}</a>
+                </div>
+                <div class ="features_post_time">
+                    <p>{{ first_post.date }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="features_post_photo">
+                <img src="{% static 'blog/img/photo_test.jpg' %}" alt="photo">
+            </div>
+        </article>
+    </div>
+</section>
+<section class="blog">
+    <div class="container">
+        <div class="blog_grid_container">
+            <div class="blog_articles">
+                <div class="blog_section_title">
+                    <h2>Articles</h2>
+                    <p>View tha latest news on Blogger</p>
+                </div>
+                {% for post in posts %}
+                    <article class="blog_post">
+                        <div class="blog_post_grid_container">
+                            <div class="blog_post_photo">
+                                <img src="{{ post.banner.url }}" alt="photo">
+                            </div>
+                            <div class="blog_post_information">
+                                <div class="blog_post_topic">
+                                    <a href = "{% url 'post' post.id %}">{{ post.topic }}</a>
+                                </div>
+                                <div class="blog_post_title">
+                                    <a href = "{% url 'post' post.id %}">{{ post.title }}</a>
+                                </div>
+                                <div class="blog_post_date">
+                                    <a href = "{% url 'post' post.id %}">{{ post.date }}</a>
+                                </div>
+                                <div class="blog_post_short_info">
+                                    <p>{{ post.short_info }}</p>
+                                </div>
+                                <div class="blog_post_read_more">
+                                    <a href ="{% url 'post' post.id %}">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+                <div class="pagination">
+                    {% if posts.has_previous %}
+                        <div class="pagination_first">
+                            <a href="?page=1">First</a>
+                        </div>
+                        <div class="page_number">
+                            <p>{{ posts.number }}</p>
+                        </div>
+                        <div class="pagination_previous">
+                            <a href="?page={{ posts.previous_page_number }}">Previous</a>
+                        </div>
+                    {% endif %}
+                    {% if posts.has_next %}
+                        <div class="page_number">
+                            <p>{{ posts.number }}</p>
+                        </div>
+                        <div class="pagination_next_page">
+                            <a href="?page={{ posts.next_page_number }}"> ></a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="blog_trend_posts">
+                <div class="blog_trend_post_title">
+                    <h2>TRENDING POST</h2>
+                </div>
+                {% for post in trend_posts %}
+                    <article class="trend_post">
+                        <div class="trend_post_grid_container">
+                            <div class="trend_post_photo">
+                                <img src="{{ post.banner.url }}" alt="photo">
+                            </div>
+                            <div class="trend_post_information">
+                                <div class="trend_post_title">
+                                    <a href = "{% url 'post' post.id %}">{{ post.title }}</a>
+                                </div>
+                                <div class="trend_post_date">
+                                    <a href = "{% url 'post' post.id %}">{{ post.date }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

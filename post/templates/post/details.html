@@ -1,0 +1,66 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}Post details{% endblock %}
+
+{% block content %}
+<div class="post_details">
+    <div class="container">
+        <div class="post_details_container">
+            <div class="one_post_details">
+                <div class="post_details_topic">
+                    <a href ="{% url 'post' post.id %}">{{ post.topic }}</a>
+                </div>
+                <div class="post_details_title">
+                    <a href="{% url 'post' post.id %}">{{ post.title }}</a>
+                </div>
+                <div class="post_details_date">
+                    <a href="{% url 'post' post.id %}">{{ post.date }}</a>
+                </div>
+                <div class="post_details_photo">
+                    <img src="{{ post.banner.url }}" alt="photo">
+                </div>
+                <div class="post_add_content">
+                    <p>{{ post.content }}</p>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="change_post">
+                        <h2>You don't like the content of the post ?</h2>
+                        <a href="{% url 'update' post.id %}" class ="btn btn-success">Update post</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="previous_or_next">
+                <ul class="previous_or_next_ul">
+                    <li class="previous">
+                        {% if previous_post %}
+                        <div class ="previous_tag">
+                            <a href="{% url 'post' previous_post.id %}">Previous</a>
+                        </div>
+                        <div class="previous_title">
+                            <a href="{% url 'post' previous_post.id %}">{{ previous_post.title }}</a>
+                        </div>
+                        <div class="previous_date">
+                            <a href="{% url 'post' previous_post.id %}">{{ previous_post.date }}</a>
+                        </div>
+                        {% endif %}
+                    </li>
+                    <li class="next">
+                        {% if next_post %}
+                        <div class ="next_tag">
+                            <a href="{% url 'post' next_post.id %}">Next</a>
+                        </div>
+                        <div class="next_title">
+                            <a href="{% url 'post' next_post.id %}">{{ next_post.title }}</a>
+                        </div>
+                        <div class="next_date">
+                            <a href="{% url 'post' next_post.id %}">{{ next_post.date }}</a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}Update post{% endblock %}
+
+{% block content %}
+<section class ="add_post">
+    <div class ="container">
+        <div class="add_post_info">
+            <p>Update post!</p>
+            <p>You dont like post content ? It`s time to change this!</p>
+        </div>
+        <div class="post_form">
+            <h2>Post Form</h2>
+        </div>
+        <form method="post" class ="add_post_grid_container" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="post_add_title">
+                {{ form.title }}
+            </div>
+            <div class='post_add_date'>
+                {{ form.date }}
+            </div>
+            <div class="post_add_topic">
+                {{ form.topic }}
+            </div>
+            <div class="post_add_short_info">
+                {{ form.short_info }}
+            </div>
+            <div class ="post_add_banner">
+                {{ form.banner }}
+            </div>
+            <div class="post_add_content">
+                {{ form.content }}
+            </div>
+            <div class="post_button">
+                <button class = "btn btn-success" type="submit">Update post</button>
+            </div>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+</section>
+{% endblock %}

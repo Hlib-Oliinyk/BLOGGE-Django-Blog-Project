@@ -1,0 +1,31 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}Contact{% endblock %}
+
+{% block content %}
+<div class="contact">
+  <div class="container">
+      <div class="contact_information">
+        <h2>Contact Me</h2>
+        <p>If you have any questions or suggestions, you can write them in the form</p>
+      </div>
+      <div class="contact_form_section">
+        <form class="contact_form">
+          <div class="contact_add_name">
+            <input type="text" name="username" placeholder="Your Name">
+          </div>
+          <div class="contact_add_email">
+            <input type="email" name="user_email" placeholder="Your Email">
+          </div>
+          <div class="contact_add_text">
+            <textarea name="user_text" placeholder="Message here..."></textarea>
+          </div>
+        </form>
+        <div class="contact_button">
+          <button class = "btn btn-success" type="submit">Send Message</button>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

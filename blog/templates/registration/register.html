@@ -1,0 +1,15 @@
+{% extends 'registration/forms.layout.html' %}
+{% load static %}
+
+{% block title%}Register{% endblock %}
+{% block content %}
+    <form method="POST" class="form-group">
+        <div class="register_title">
+            <h2>Registration</h2>
+        </div>
+        {% csrf_token %}
+        {{ form }}
+        <p class="create">Already have account ? Click <a href="/login">here</a> to login</p>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+{% endblock %}

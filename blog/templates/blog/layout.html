@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'post/css/create.css' %}">
+    <link rel="stylesheet" href="{% static 'post/css/details.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/contact.css' %}">
+</head>
+<body>
+<div class="navbar">
+    <div class="container">
+        <div class="navbar_grid_container">
+            <div class="navbar_logo">
+                BLOGGE
+            </div>
+            <div class="navbar_menu">
+                <ul class="navbar_menu_options">
+                    <li class="navbar_item">
+                        <a class="navbar_link" href = "{% url 'posts' %}">HOME</a>
+                    </li>
+                    <li class="navbar_item">
+                        <a class="navbar_link" href = "{% url 'about' %}">ABOUT</a>
+                    </li>
+                    <li class="navbar_item">
+                        <a class="navbar_link" href ="{% url 'contact' %}">CONTACT</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="navbar_item">
+                            <a class="navbar_link" href="{% url 'create' %}">ADD POST</a>
+                        </li>
+                    <li class="navbar_item">
+                        <a class="navbar_link" href="{% url 'logout' %}">LOGOUT</a>
+                    </li>
+                    {% endif %}
+                    <li class="navbar_item">
+                        <a class="navbar_link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+<section class="footer">
+    <div class="container">
+        <div class="footer_logo">
+            <p>BLOGGE</p>
+        </div>
+        <div class="footer_navbar">
+            <ul class="footer_navbar_options">
+                <li class="footer_item">
+                    <a class="navbar_link" href = "{% url 'posts' %}">HOME</a>
+                </li>
+                <li class="footer_item">
+                    <a class="navbar_link" href = "{% url 'about' %}">ABOUT</a>
+                </li>
+                <li class="footer_item">
+                    <a class="navbar_link" href ="{% url 'contact' %}">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="copy_right">
+        <p>This site created by Hlib Oliinyk</p>
+    </div>
+</section>
+<script src ="{% static 'blog/js/script.js' %}"></script>
+</body>
+</html>

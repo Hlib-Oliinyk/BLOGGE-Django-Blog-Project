@@ -1,0 +1,47 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}Create post{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<section class ="add_post">
+    <div class ="container">
+        <div class="add_post_info">
+            <p>Create your post!</p>
+            <p>Ready to share your thoughts with the world? It's quick and easy to create your post here!
+                Whether you're sharing a story, asking a question, or showcasing your latest project, we’re excited to see what you’ve got.</p>
+        </div>
+        <div class="post_form">
+            <h2>Post Form</h2>
+        </div>
+        <form method="post" class ="add_post_grid_container" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="post_add_title">
+                {{ form.title }}
+            </div>
+            <div class='post_add_date'>
+                {{ form.date }}
+            </div>
+            <div class="post_add_topic">
+                {{ form.topic }}
+            </div>
+            <div class="post_add_short_info">
+                {{ form.short_info }}
+            </div>
+            <div class ="post_add_banner">
+                {{ form.banner }}
+            </div>
+            <div class="post_add_content">
+                {{ form.content }}
+            </div>
+            <div class="post_button">
+                <button class = "btn btn-success" type="submit">Add post</button>
+            </div>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

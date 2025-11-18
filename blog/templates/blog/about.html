@@ -1,0 +1,24 @@
+{% extends 'blog/layout.html' %}
+{% load static %}
+
+{% block title%}About me{% endblock %}
+
+{% block content %}
+<div class="about">
+    <div class="container">
+        <div class="about_me">
+            <h3>Hi I Am Hlib Oliinyk</h3>
+            <p>Hello! My name is Hlib, and I'm 18 years old. I'm currently diving into the world of web development, and I’m working on my first Django project.
+                I'm passionate about learning new technologies, and Django has really caught my interest as it provides powerful tools to create dynamic web applications. I'm excited about the opportunities ahead as I continue to explore the vast landscape of development!
+                Stay tuned as I progress with my project and learn more along the way!</p>
+            <div class ="about_me_photo">
+                <img src="{% static 'blog/img/photo_test.jpg' %}" alt="photo">
+            </div>
+            <h3>Hey there, what`s up?</h3>
+            <p>Welcome to BLOGGE — your go-to spot for all things. Whether you're here for some good reads, fresh ideas, or just need a little distraction, we’ve got you covered. This blog isn’t just about sharing stories—it’s about connecting, learning, and having fun along the way.
+                Expect a mix of personal experiences, helpful tips, and some random thoughts that might just make you laugh, think, or even inspire your next big move.
+                <br><br> Got a topic you want to see covered? Or maybe you just want to say hey? Drop a comment, shoot a message, or reach out—we’re all about keeping it real and making this space feel like home.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
