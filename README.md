@@ -17,7 +17,7 @@ BLOGGE is a modern blog platform built with Django. It lets users create, edit, 
 ## Installation
 
 1. Clone the repository:
-git clone https://github.com/your-username/blogge.git
+git clone https://github.com/Hlib-Oliinyk/blogge.git
 cd blogge
 
 2. Create and activate a virtual environment:
